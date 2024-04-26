@@ -24,7 +24,7 @@
 .buttons {
     display: flex;
     justify-content: flex-start;
-    margin-top: 30px;
+    margin-top: 15px;
     gap: 20px;
 }
 
@@ -45,7 +45,7 @@
     z-index: 5;
 }
 
-h1 {
+.h1_index {
     font-size: 140px;
     margin-left: 0px; 
 }
@@ -78,4 +78,9 @@ h1 {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.mainP {
+    right: 820px;
+    top:-50px;
 }

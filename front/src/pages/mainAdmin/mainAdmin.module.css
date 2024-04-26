@@ -1,10 +1,7 @@
-body {
+.mainAdmin{
     font-family: sans-serif;
     margin: 0;
     padding: 20px;
-}
-
-main {
     text-align: center;
 }
 
@@ -16,13 +13,13 @@ main {
     margin-left: 260px;
 }
 
-.top-row {
+.top_row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-.bottom-row {
+.bottom_row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-left: 273px;
@@ -52,7 +49,7 @@ main {
     transform: scale(1.1);
 }
 
-.card p {
+.card_p {
     text-align: center;
     margin-top: 27px;
     color: #214320;
@@ -81,7 +78,7 @@ h2 {
     margin-top: 80px;
 }
 
-.text p {
+.text_p {
     font-size: 30px;
     color: #466145;
     font-family: 'Poppins', sans-serif;
