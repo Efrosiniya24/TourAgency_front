@@ -1,6 +1,5 @@
 import React from 'react';
 import mainAdmin from './mainAdmin.module.css';
-import header from "./../../styles/header.module.css";
 
 import travel from "./photo/travel.png";
 import report from "./photo/report.png";
@@ -9,13 +8,12 @@ import application from "./photo/application.png";
 import analytic from "./photo/analytic.png";
 
 import { NavLink } from "react-router-dom";
+import HeaderAdmin from '../../components/headerAdmin/headerAdmin';
 
 const MainAdmin = () => {
     return ( 
         <div className={mainAdmin.mainAdmin}>
-            <header className={header.headerNotMain}>
-                <a href="/static" className={mainAdmin.logo}>WORLD</a>
-            </header>
+            <HeaderAdmin/>
             <main>
                 <div className={mainAdmin.text}>
                     <h2>Добро пожаловать!</h2>
