@@ -6,7 +6,7 @@ import axios from 'axios';
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (event) => {
@@ -15,12 +15,12 @@ const SignUp = () => {
     const data = {
       name,
       email,
-      phoneNumber,
+      phone,
       password
     };
 
     try {
-      const response = await axios.post('http://localhost:8000/api/signUp', data);
+      const response = await axios.post('http://localhost:8000/user/signUp', data);
       console.log('Ответ сервера:', response.data);
     } catch (error) {
       console.error('Ошибка при отправке данных:', error);
@@ -49,10 +49,10 @@ const SignUp = () => {
             />
             <input
               type="text"
-              name="phoneNumber"
+              name="phone"
               placeholder="Номер телефона"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
             />
             <input
               type="text"
