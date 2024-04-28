@@ -4,13 +4,11 @@ import { NavLink } from "react-router-dom";
 import axios from 'axios';
 
 const SignUp = () => {
-  // State для полей формы
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
-  // Обработчик отправки формы
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -24,12 +22,8 @@ const SignUp = () => {
     try {
       const response = await axios.post('http://localhost:8000/api/signUp', data);
       console.log('Ответ сервера:', response.data);
-      // Здесь вы можете обработать успешный ответ, 
-      // например, перенаправить пользователя или показать сообщение
     } catch (error) {
       console.error('Ошибка при отправке данных:', error);
-      // Здесь вы можете обработать ошибку, 
-      // например, показать сообщение об ошибке пользователю
     }
   };
 
