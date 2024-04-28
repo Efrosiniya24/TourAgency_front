@@ -4,15 +4,14 @@ import login from './login.module.css';
 import { NavLink } from "react-router-dom";
 
 const SignIn = () => {
-  // Assuming you have a state management solution (e.g., useState, Redux)
+
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [_csrf, setCsrf] = React.useState(''); // Assuming you have a way to fetch the CSRF token
+  const [_csrf, setCsrf] = React.useState(''); 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle login logic here using username, password, and _csrf
-    // e.g., send a POST request to your backend API
+
   };
 
   return (
