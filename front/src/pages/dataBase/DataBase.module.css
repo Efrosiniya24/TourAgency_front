@@ -46,6 +46,7 @@ header {
 .search input {
   width: 100%;
   padding: 10px;
+
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -174,4 +175,15 @@ tbody td:hover {
   transform: scale(1.005); /* Enlarge text on hover */
   /* You can add additional styles here if needed, e.g., changing text color */
   cursor:pointer;
+}
+
+.sort_icon {
+  width: 20px;
+  height: auto;
+}
+
+.sort_button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
