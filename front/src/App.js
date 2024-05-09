@@ -5,6 +5,7 @@ import SignIn from "./pages/authorization/SignIn";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './pages/authorization/SignUp';
 import MainAdmin from './pages/mainAdmin/MainAdminPage';
+import DataBase from './pages/dataBase/DataBase';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/signIn" element={<SignIn/>}></Route>
                 <Route path="/signUp" element={<SignUp/>}></Route>
                 <Route path="/mainAdmin" element={<MainAdmin/>}></Route>
+                <Route path="/dataBase" element={<DataBase/>}></Route>
             </Routes>
         </Router>
     </div>

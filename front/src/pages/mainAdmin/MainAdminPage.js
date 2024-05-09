@@ -39,10 +39,12 @@ const MainAdmin = () => {
                             <img src={report}/>
                             <p className={mainAdmin.card_p}>Отчет</p>
                         </div>
-                        <div className={mainAdmin.card}>
-                            <img src={database}/>
-                            <p className={mainAdmin.card_p}>База данных</p>
-                        </div>
+                        <NavLink to ="/dataBase">
+                            <div className={mainAdmin.card}>
+                                <img src={database}/>
+                                <p className={mainAdmin.card_p}>База данных</p>
+                            </div>
+                        </NavLink>
                     </div>
                 </div>
             </main>
