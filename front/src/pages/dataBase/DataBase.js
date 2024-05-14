@@ -23,6 +23,7 @@ const DataBase = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,8 +75,14 @@ const DataBase = () => {
   };
 
   const handleUserClick = (user) => {
-    setSelectedUser(user);
-    setIsVisible(true); 
+    if (user.id === selectedUserId) { 
+      setIsVisible(false);
+      setSelectedUserId(null); 
+    } else {
+      setSelectedUser(user);
+      setIsVisible(true);
+      setSelectedUserId(user.id); // Сохраняем ID выбранного пользователя
+    }
   };
 
   const sortedUsers = [...users].sort((a, b) => {
