@@ -21,6 +21,7 @@ function App() {
                 <Route path="/mainAdmin" element={<MainAdmin/>}></Route>
                 <Route path="/dataBase" element={<DataBase/>}></Route>
                 <Route path="/toursAdmin" element={<ToursAdmin/>}></Route>
+                <Route path="/dataBase/toursAdmin" element={<ToursAdmin/>}></Route>
             </Routes>
         </Router>
     </div>

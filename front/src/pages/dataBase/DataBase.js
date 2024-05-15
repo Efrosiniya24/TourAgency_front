@@ -96,7 +96,7 @@ const DataBase = () => {
 
   return (
     <div>
-      <HeaderAdmin />
+      <HeaderAdmin/>
       <div className={dataBase.containerDataBase}>
       <SliderBar/>
         <main className={dataBase.content}>
