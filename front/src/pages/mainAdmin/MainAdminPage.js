@@ -29,10 +29,12 @@ const MainAdmin = () => {
                             <img src={application}/>
                             <p className={mainAdmin.card_p}>Заявки</p>
                         </div>
-                        <div className={mainAdmin.card}>
-                            <img src={travel}/>
-                            <p className={mainAdmin.card_p}>Туры</p>
-                        </div>
+                        <NavLink to ="/toursAdmin">
+                            <div className={mainAdmin.card}>
+                                <img src={travel}/>
+                                <p className={mainAdmin.card_p}>Туры</p>
+                            </div>
+                        </NavLink>
                     </div>
                     <div className={mainAdmin.bottom_row}>
                         <div className={mainAdmin.card}>

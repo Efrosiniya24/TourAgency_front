@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './pages/authorization/SignUp';
 import MainAdmin from './pages/mainAdmin/MainAdminPage';
 import DataBase from './pages/dataBase/DataBase';
+import ToursAdmin from './pages/toursAdmin/ToursAdmin';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/signUp" element={<SignUp/>}></Route>
                 <Route path="/mainAdmin" element={<MainAdmin/>}></Route>
                 <Route path="/dataBase" element={<DataBase/>}></Route>
+                <Route path="/toursAdmin" element={<ToursAdmin/>}></Route>
             </Routes>
         </Router>
     </div>

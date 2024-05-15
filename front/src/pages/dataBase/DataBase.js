@@ -1,13 +1,10 @@
 import { NavLink } from "react-router-dom";
 import HeaderAdmin from '../../components/headerAdmin/headerAdmin';
-import SelectedUser from "../../components/headerAdmin/selectedUser/selectedUser";
+import SliderBar from "../../components/sliderBar/sliderBar";
+import SelectedUser from "../../components/selectedUser/selectedUser";
 
 import dataBase from './DataBase.module.css';
-import databaseIcon from "./photo/database.png";
-import requestIcon from "./photo/application.png";
-import analyticsIcon from "./photo/analytics.png";
-import reportIcon from "./photo/report.png";
-import tourIcon from "./photo/travel.png";
+
 import up from "./photo/up.png";
 import down from "./photo/down.png";
 import searchIcon from "./photo/search2.png";
@@ -101,42 +98,7 @@ const DataBase = () => {
     <div>
       <HeaderAdmin />
       <div className={dataBase.containerDataBase}>
-        <aside className={dataBase.sidebar}>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="#" activeClassName="active">
-                  <img src={databaseIcon} />
-                  <p className={dataBase.menuCurrent}>База данных</p>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="#" activeClassName="active">
-                  <img src={requestIcon} />
-                  <p className={dataBase.menu}>Заявки</p>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="#" activeClassName="active">
-                  <img src={analyticsIcon} />
-                  <p className={dataBase.menu}>Аналитика</p>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="#" activeClassName="active">
-                  <img src={reportIcon} />
-                  <p className={dataBase.menu}>Отчет</p>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="#" activeClassName="active">
-                  <img src={tourIcon} />
-                  <p className={dataBase.menu}>Туры</p>
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-        </aside>
+      <SliderBar/>
         <main className={dataBase.content}>
           <div className={dataBase.searchAndUserInfo}>
             <div className={dataBase.search}>

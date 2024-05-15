@@ -87,14 +87,6 @@ nav {
   padding-top: 30px;
 }
 
-p.menu {
-  font-weight: 700;
-}
-
-p.menuCurrent {
-  font-weight: 800;
-}
-
 li {
   transition: transform 0.3s ease;
 }
