@@ -116,6 +116,7 @@ li:hover {
   padding-left: 50px;
   position: relative;
   width: 400px;
+  margin-top: -45px;
 }
 
 .tableDataBase {
@@ -191,7 +192,24 @@ tbody tr {
 }
 
 .widerTable {
-  width: 80%; /* Установите желаемую ширину таблицы */
-  margin: 0 auto; /* Центрируйте таблицу */
+  width: 80%; 
+  margin: 0 auto;
+}
+
+.addButton {
+  padding: 10px 20px;
+  background-color: #214320;
+  color: white;
+  border: none;
+  border-radius: 70px;
+  cursor: pointer;
+  margin-top: 7px;
+  margin-left: 870px;
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.addButton:hover {
+  transform: scale(1.1);
 }
 

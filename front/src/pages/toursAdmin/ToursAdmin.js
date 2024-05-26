@@ -105,10 +105,14 @@ const ToursAdmin = () => {
   };
 
   const handleTourClick = (tour) => {
-    setSelectedTour(tour);
-    setSelectedTourId(tour.id);
-    setTourData(tour);
-    setIsVisible(true);
+    if (selectedTour && selectedTour.id === tour.id && isVisible) {
+      handleClose();
+    } else {
+      setSelectedTour(tour);
+      setSelectedTourId(tour.id);
+      setTourData(tour);
+      setIsVisible(true);
+    }
   };
 
   const sortedTours = [...tours].sort((a, b) => {
@@ -119,6 +123,22 @@ const ToursAdmin = () => {
     }
   });
 
+  const handleAddClick = () => {
+    setIsVisible(true);
+    setSelectedTour(null);
+    setTourData({
+      name: '',
+      country: '',
+      numberOfDays: '',
+      price: '',
+      startDate: '',
+      endDate: '',
+      city: '',
+      description: '',
+      program: '',
+    });
+  };
+
   if (error) {
     return <div>Ошибка: {error.message}</div>;
   }
@@ -127,9 +147,12 @@ const ToursAdmin = () => {
     <div>
       <HeaderAdmin/>
       <div className={toursAdmin.containerToursAdmin}>
-      <SliderBar/>
-      <main className={toursAdmin.content}>
-      <div className={toursAdmin.searchAndUserInfo}>
+        <SliderBar/>
+        <main className={toursAdmin.content}>
+          <div className={toursAdmin.searchAndUserInfo}>
+            <button className={toursAdmin.addButton} onClick={handleAddClick}>
+              Добавить<br/>Услугу
+            </button>
             <div className={toursAdmin.search}>
               <img 
                 src={searchIcon} 
@@ -150,7 +173,6 @@ const ToursAdmin = () => {
                 onClick={handleReload} 
               />
             </div>
-         
             {isVisible && (
               <TourInputForm
                 tourData={tourData}
@@ -161,8 +183,8 @@ const ToursAdmin = () => {
                 tours={tours}
               />
             )}
-        </div>
-        <section className={toursAdmin.data}>
+          </div>
+          <section className={toursAdmin.data}>
             <div className={toursAdmin.tableContainer}> 
               {isLoading ? (
                 <div>Загрузка...</div>
