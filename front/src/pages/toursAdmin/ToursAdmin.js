@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import HeaderAdmin from '../../components/headerAdmin/headerAdmin'; 
 import SliderBar from '../../components/sliderBar/sliderBar';
-import SelectedTour from "../../components/selectedUser/selectedUser";
-
 import toursAdmin from './toursAdmin.module.css';
 import axios from 'axios';
+import TourInputForm from './../../components/tourInputForm/tourInputForm'; 
 
 import searchIcon from "./photo/search2.png";
 import up from "./photo/up.png";
@@ -39,9 +38,44 @@ const ToursAdmin = () => {
     fetchData();
   }, []);
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setTourData({ ...tourData, [name]: value });
+  };
+
   const handleSortClick = () => {
     setSortDirection(sortDirection === 'desc' ? 'asc' : 'desc');
   };
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setSelectedTourId(null);
+  };
+
+  const handleDelete = async () => {
+    if (selectedTourId) {
+      try {
+        await axios.delete(`http://localhost:8000/tours/deleteTour/${selectedTourId}/`);
+        setTours(tours.filter(tour => tour.id !== selectedTourId));
+        setSelectedTourId(null);
+        setIsVisible(false);
+      } catch (error) {
+        console.error('Ошибка при удалении тура:', error);
+      }
+    }
+  };
+
+  const [tourData, setTourData] = useState({
+    name: '',
+    country: '',
+    numberOfDays: '',
+    price: '',
+    startDate: '',
+    endDate: '',
+    city: '',
+    description: '',
+    program: '',
+  });
 
   const handleSearch = async () => {
     setIsLoading(true);
@@ -71,14 +105,10 @@ const ToursAdmin = () => {
   };
 
   const handleTourClick = (tour) => {
-    if (tour.id === selectedTourId) {
-      setIsVisible(false);
-      setSelectedTourId(null);
-    } else {
-      setSelectedTour(tour);
-      setIsVisible(true);
-      setSelectedTourId(tour.id);
-    }
+    setSelectedTour(tour);
+    setSelectedTourId(tour.id);
+    setTourData(tour);
+    setIsVisible(true);
   };
 
   const sortedTours = [...tours].sort((a, b) => {
@@ -120,8 +150,18 @@ const ToursAdmin = () => {
                 onClick={handleReload} 
               />
             </div>
-            {isVisible && <SelectedTour user={selectedTour} dataBase={toursAdmin} setIsVisible={setIsVisible} />}
-          </div>
+         
+            {isVisible && (
+              <TourInputForm
+                tourData={tourData}
+                handleChange={handleChange}
+                handleDelete={handleDelete}
+                handleClose={handleClose}
+                setTours={setTours}
+                tours={tours}
+              />
+            )}
+        </div>
         <section className={toursAdmin.data}>
             <div className={toursAdmin.tableContainer}> 
               {isLoading ? (

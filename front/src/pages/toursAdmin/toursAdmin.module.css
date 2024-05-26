@@ -1,9 +1,10 @@
+/* Общие стили */
 .containerToursAdmin {
   display: flex;
   min-height: 100vh;
   padding-top: 30px;
-
 }
+
 .content {
   flex-grow: 1;
   padding: 20px;
@@ -12,7 +13,6 @@
   padding-top: 80px;
   height: auto;
 }
-
 
 table {
   width: 100%;
@@ -52,6 +52,7 @@ th {
 .narrow-slider {
   width: 50%;
 }
+
 nav {
   padding-top: 30px;
 }
@@ -101,8 +102,6 @@ li:hover {
   outline: none;
 }
 
-
-
 .data {
   flex: 1;
   max-width: calc(100% - 1100px);
@@ -147,11 +146,17 @@ li:hover {
 
 tbody td {
   transition: transform 0.1s ease;
+  padding: 12px; /* Добавление отступа */
 }
 
 tbody td:hover {
   transform: scale(1.005);
   cursor: pointer;
+}
+
+tbody tr {
+  /* border: 1px solid #ddd;  */
+  margin: 10px 0; /* Отступ между строками */
 }
 
 .sort_icon {
