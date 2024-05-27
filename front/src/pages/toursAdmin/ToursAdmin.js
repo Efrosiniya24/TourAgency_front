@@ -17,6 +17,7 @@ const ToursAdmin = () => {
   const [error, setError] = useState(null);
   const [selectedTourId, setSelectedTourId] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [sortDirection, setSortDirection] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -50,6 +51,7 @@ const ToursAdmin = () => {
   const handleClose = () => {
     setIsVisible(false);
     setSelectedTourId(null);
+    setIsEditing(false); // Reset the editing state
   };
 
   const handleDelete = async () => {
@@ -112,6 +114,7 @@ const ToursAdmin = () => {
       setSelectedTourId(tour.id);
       setTourData(tour);
       setIsVisible(true);
+      setIsEditing(true); // Set the editing state
     }
   };
 
@@ -131,12 +134,13 @@ const ToursAdmin = () => {
       country: '',
       numberOfDays: '',
       price: '',
-      startDate: '',
+      beginningDate: '',
       endDate: '',
       city: '',
       description: '',
       program: '',
     });
+    setIsEditing(false); // Set the adding state
   };
 
   if (error) {
@@ -181,6 +185,7 @@ const ToursAdmin = () => {
                 handleClose={handleClose}
                 setTours={setTours}
                 tours={tours}
+                isEditing={isEditing} // Pass the editing state
               />
             )}
           </div>

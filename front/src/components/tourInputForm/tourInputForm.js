@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import axios from 'axios';
 import tourInputForm from './tourInputForm.module.css';
@@ -20,6 +20,10 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
       handleClose(); // Close the form after saving
     } catch (error) {
       console.error('Ошибка при сохранении тура:', error);
+      if (error.response && error.response.data) {
+        console.error('Details:', error.response.data);
+        alert('Error: ' + JSON.stringify(error.response.data)); // Display detailed error
+      }
     }
   };
 
@@ -57,7 +61,7 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                   <th>Количество дней:</th>
                   <td>
                     <input
-                      type="text"
+                      type="number"
                       name="numberOfDays"
                       value={tourData.numberOfDays}
                       onChange={handleChange}
@@ -68,7 +72,7 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                   <th>Цена:</th>
                   <td>
                     <input
-                      type="text"
+                      type="number"
                       name="price"
                       value={tourData.price}
                       onChange={handleChange}
@@ -79,10 +83,11 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                   <th>Начало тура:</th>
                   <td>
                     <input
-                      type="date"
-                      name="startDate"
-                      value={tourData.startDate}
+                      type="text"
+                      name="beginningDate"
+                      value={tourData.beginningDate}
                       onChange={handleChange}
+                      placeholder="DD.MM.YYYY или YYYY-MM-DD"
                     />
                   </td>
                 </tr>
@@ -90,10 +95,11 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                   <th>Конец тура:</th>
                   <td>
                     <input
-                      type="date"
+                      type="text"
                       name="endDate"
                       value={tourData.endDate}
                       onChange={handleChange}
+                      placeholder="DD.MM.YYYY или YYYY-MM-DD"
                     />
                   </td>
                 </tr>
@@ -130,12 +136,14 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                     />
                   </td>
                 </tr>
-                    </tbody>
-                    
+              </tbody>
             </table>
-            <button type="submit" className={tourInputForm.submit}>Сохранить</button>
-                      <button type="button" onClick={handleDelete} className={tourInputForm.delete}>Удалить</button>
-                 
+            <button type="submit" className={tourInputForm.submit}>
+              {isEditing ? 'Сохранить' : 'Добавить'}
+            </button>
+            {isEditing && (
+              <button type="button" onClick={handleDelete} className={tourInputForm.delete}>Удалить</button>
+            )}
           </div>
         </form>
       </div>
