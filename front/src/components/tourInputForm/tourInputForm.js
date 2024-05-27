@@ -3,16 +3,23 @@ import TextareaAutosize from 'react-textarea-autosize';
 import axios from 'axios';
 import tourInputForm from './tourInputForm.module.css';
 
-const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setTours, tours }) => {
+const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setTours, tours, isEditing }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:8000/tours/updateTour/${tourData.id}/`, tourData);
-      const updatedTour = response.data;
-      setTours(tours.map(tour => tour.id === updatedTour.id ? updatedTour : tour));
+      if (isEditing) {
+        // Update existing tour
+        const response = await axios.put(`http://localhost:8000/tours/updateTour/${tourData.id}/`, tourData);
+        const updatedTour = response.data;
+        setTours(tours.map(tour => tour.id === updatedTour.id ? updatedTour : tour));
+      } else {
+        // Create new tour
+        const response = await axios.post('http://localhost:8000/tours/create/', tourData);
+        setTours([...tours, response.data]);
+      }
       handleClose(); // Close the form after saving
     } catch (error) {
-      console.error('Ошибка при обновлении тура:', error);
+      console.error('Ошибка при сохранении тура:', error);
     }
   };
 
@@ -20,10 +27,10 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
     <div className={tourInputForm.containerInput}>
       <div className={tourInputForm.table_containerInput}>
         <form onSubmit={handleSubmit}>
-          <table>
-            <tbody>
-              <div className={tourInputForm.border}>
-                <div className={tourInputForm.closeButton} onClick={handleClose}>×</div>
+          <div className={tourInputForm.border}>
+            <div className={tourInputForm.closeButton} onClick={handleClose}>×</div>
+            <table>
+              <tbody>
                 <tr>
                   <th>Название тура:</th>
                   <td>
@@ -123,11 +130,13 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                     />
                   </td>
                 </tr>
-                <button type="submit" className={tourInputForm.submit}>Сохранить</button>
-                <button type="button" onClick={handleDelete} className={tourInputForm.delete}>Удалить</button>
-              </div>
-            </tbody>
-          </table>
+                    </tbody>
+                    
+            </table>
+            <button type="submit" className={tourInputForm.submit}>Сохранить</button>
+                      <button type="button" onClick={handleDelete} className={tourInputForm.delete}>Удалить</button>
+                 
+          </div>
         </form>
       </div>
     </div>
