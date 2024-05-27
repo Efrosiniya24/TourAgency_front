@@ -37,8 +37,7 @@ th {
 
 .data {
   flex: 1;
-  max-width: calc(100% - 1000px);
-  margin-left: 300px;
+  margin-left: 100px; /* Уменьшение отступа слева */
 }
 
 .search input {
@@ -104,10 +103,10 @@ li:hover {
 
 .data {
   flex: 1;
-  max-width: calc(100% - 1100px);
   border-radius: 20px;
   border: 1px solid #000;
   background-color: #f2f2f2;
+  padding: 5px;
 }
 
 .search {
@@ -147,7 +146,7 @@ li:hover {
 
 tbody td {
   transition: transform 0.1s ease;
-  padding: 12px; /* Добавление отступа */
+  padding: 12px;
 }
 
 tbody td:hover {
@@ -156,8 +155,7 @@ tbody td:hover {
 }
 
 tbody tr {
-  /* border: 1px solid #ddd;  */
-  margin: 10px 0; /* Отступ между строками */
+  margin: 10px 0;
 }
 
 .sort_icon {
@@ -181,7 +179,6 @@ tbody tr {
 
 .reloadIcon:hover {
   transform: scale(1.1);
-  cursor: pointer;
 }
 
 .searchAndUserInfo {
@@ -189,11 +186,6 @@ tbody tr {
   flex-direction: column;
   gap: 10px;
   width: 700px;
-}
-
-.widerTable {
-  width: 80%; 
-  margin: 0 auto;
 }
 
 .addButton {
@@ -204,7 +196,7 @@ tbody tr {
   border-radius: 70px;
   cursor: pointer;
   margin-top: 7px;
-  margin-left: 870px;
+  margin-left: 680px;
   width: 100px;
   transition: transform 0.3s ease;
 }
@@ -212,4 +204,3 @@ tbody tr {
 .addButton:hover {
   transform: scale(1.1);
 }
-

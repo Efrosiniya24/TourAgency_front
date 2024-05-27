@@ -77,6 +77,7 @@ const ToursAdmin = () => {
     city: '',
     description: '',
     program: '',
+    travelAgency: '',
   });
 
   const handleSearch = async () => {
@@ -114,7 +115,7 @@ const ToursAdmin = () => {
       setSelectedTourId(tour.id);
       setTourData(tour);
       setIsVisible(true);
-      setIsEditing(true); // Set the editing state
+      setIsEditing(true); 
     }
   };
 
@@ -139,8 +140,9 @@ const ToursAdmin = () => {
       city: '',
       description: '',
       program: '',
+      travelAgency: '',
     });
-    setIsEditing(false); // Set the adding state
+    setIsEditing(false); 
   };
 
   if (error) {
@@ -165,7 +167,7 @@ const ToursAdmin = () => {
               />
               <input 
                 type="text" 
-                placeholder="Введите название тура, страну или город"
+                placeholder="Введите название тура, страну,город или турагентство"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={handleSearchEnter}
@@ -185,7 +187,7 @@ const ToursAdmin = () => {
                 handleClose={handleClose}
                 setTours={setTours}
                 tours={tours}
-                isEditing={isEditing} // Pass the editing state
+                isEditing={isEditing} 
               />
             )}
           </div>
@@ -206,6 +208,7 @@ const ToursAdmin = () => {
                       <th className={toursAdmin.th_content}><div>Туры</div></th>
                       <th className={toursAdmin.th_content}><div>Страна</div></th>
                       <th className={toursAdmin.th_content}><div>Город</div></th>
+                      <th className={toursAdmin.th_content}><div>Турагентство</div></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -215,6 +218,7 @@ const ToursAdmin = () => {
                         <td>{tour.name}</td>
                         <td>{tour.country}</td>
                         <td>{tour.city}</td>
+                        <td>{tour.travelAgency}</td>
                       </tr>
                     ))}
                   </tbody>

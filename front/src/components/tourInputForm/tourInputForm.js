@@ -115,6 +115,17 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                   </td>
                 </tr>
                 <tr>
+                  <th>Турагентство:</th>
+                  <td>
+                    <input
+                      type="text"
+                      name="travelAgency"
+                      value={tourData.travelAgency}
+                      onChange={handleChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
                   <th>Описание:</th>
                   <td>
                     <TextareaAutosize
