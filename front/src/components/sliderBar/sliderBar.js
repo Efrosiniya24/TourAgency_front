@@ -15,7 +15,7 @@ const SliderBar = () => {
           <nav>
             <ul>
               <li>
-                <NavLink to="dataBase" activeClassName="active">
+                <NavLink to="/dataBase" activeClassName="active">
                   <img src={databaseIcon} />
                   <p className={sliderBar.menu}>База данных</p>
                 </NavLink>
@@ -39,7 +39,7 @@ const SliderBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="toursAdmin" activeClassName="active">
+                <NavLink to="/toursAdmin" activeClassName="active">
                   <img src={tourIcon} />
                   <p className={sliderBar.menu}>Туры</p>
                 </NavLink>

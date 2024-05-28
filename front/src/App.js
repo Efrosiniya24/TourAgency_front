@@ -21,8 +21,8 @@ function App() {
                 <Route path="/mainAdmin" element={<MainAdmin/>}></Route>
                 <Route path="/dataBase" element={<DataBase/>}></Route>
                 <Route path="/toursAdmin" element={<ToursAdmin/>}></Route>
-                <Route path="/dataBase/toursAdmin" element={<ToursAdmin/>}></Route>
-                <Route path="/dataBase/toursAdmin/dataBase" element={<DataBase/>}></Route>
+                {/* <Route path="/dataBase/toursAdmin" element={<ToursAdmin/>}></Route>
+                <Route path="/dataBase/toursAdmin/dataBase" element={<DataBase/>}></Route> */}
             </Routes>
         </Router>
     </div>
