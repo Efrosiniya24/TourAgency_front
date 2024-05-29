@@ -128,13 +128,18 @@ li:hover {
 }
 
 .tableDataBase th {
-  background-color: #e4e4e4;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom: none;
-  position: relative;
-  top: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px; /* Adding this line for oval shape */
+    border-bottom-right-radius: 20px; /* Adding this line for oval shape */
+    border-bottom: none;
+    position: relative;
+    top: 10px;
+    background-color: #e4e4e4; /* Assuming you want a background color */
+    padding: 12px; /* Adding some padding for better appearance */
+    text-align: center; /* Center-aligning text */
 }
+
 
 .th_content {
   background-color: #e0e0e0;

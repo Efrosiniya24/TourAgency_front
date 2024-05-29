@@ -1,0 +1,320 @@
+.containerOrders {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 30px;
+}
+
+.menu {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.container {
+    display: flex;
+    margin-top: 50px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    padding-top: 80px;
+    height: auto;
+}
+
+.applications {
+    display: flex;
+    gap: 20px;
+}
+
+.category {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+}
+
+.application_card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.application_card p {
+    margin: 5px 0;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.reject {
+    background-color: #e74c3c;
+    color: white;
+}
+
+button.accept {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.data {
+    flex: 1;
+    border-radius: 20px;
+    border: 1px solid #000;
+    padding: 5px;
+    padding-top: 15px;
+    overflow: hidden; /* Ensure content does not overflow */
+}
+
+.tableDataBase {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px 0; /* Horizontal space between th elements */
+}
+
+.tableDataBase tbody tr:first-child td {
+    padding-top: 20px;
+}
+
+.tableDataBase th {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px; /* Oval shape */
+    border-bottom-right-radius: 20px; /* Oval shape */
+    border-bottom: none;
+    background-color: #e4e4e4; /* Background color */
+    padding: 12px; /* Padding for appearance */
+    text-align: center; /* Center-aligning text */
+    transition: transform 0.2s ease; /* Smooth scaling transition */
+}
+
+.tableDataBase th:hover {
+    transform: scale(1.035); /* Scale up slightly on hover */
+}
+
+.th_content {
+    font-weight: bold;
+    color: #214320;
+    font-size: 23px;
+    text-align: center;
+}
+
+tbody td {
+    transition: transform 0.1s ease;
+    padding: 12px;
+}
+
+tbody td:hover {
+    transform: scale(1.005);
+    cursor: pointer;
+}
+
+tbody tr {
+    margin: 10px 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.application_card {
+    background-color: #f1f1f1;
+    border: 1px solid #787878;
+    border-radius: 20px;
+    padding: 15px;
+    width: 470px;
+    margin: 10px;
+}
+
+.application_header, .application_body {
+    margin-bottom: 10px;
+}
+
+.application_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.id_box {
+    display: flex;
+    align-items: center;
+    background-color: #e0f2f1;
+    border-radius: 15px;
+    border: 1px solid #FFFFFF;
+    padding: 5px 10px;
+    margin-top: -5px;
+    margin-left: 0px;
+    height: 30px;
+}
+
+.id_label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.id_value {
+    padding: 2px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background-color: #fff;
+}
+
+.user_info {
+    text-align: right;
+    cursor: pointer;
+}
+
+.name_box {
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 15px;
+    display: inline-block;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    width: 100%;
+    margin-top: -5px;
+    flex-grow: 1; /* Make the box take the available space */
+}
+
+.name {
+    margin-right: 8px;
+    padding-left: 10px;
+}
+
+.user_info .name {
+    text-decoration: underline;
+}
+
+.divider_black {
+    width: 1px;
+    height: 25px;
+    background-color: #000;
+}
+
+.client_info .client_detail {
+    margin: 5px 0;
+}
+
+.application_main {
+    display: flex;
+    justify-content: space-between; /* Align items horizontally */
+}
+
+.application_details {
+    background-color: #D5D5D5;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 350px;
+    height: 150px;
+    position: relative; /* Add this line */
+}
+
+.application_details p {
+    margin: 0;
+}
+
+.application_actions {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: flex-start; /* Align buttons to the start */
+    gap: 5px; /* Space between buttons */
+    margin-left: 20px; /* Add some space between details and actions */
+    margin-top: 60px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.reject {
+    background-color: #df9e61;
+    color: #000;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+button.accept {
+    background-color: #f4e06e;
+    color: #000;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.date_box {
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-top: -5px;
+}
+
+.date {
+    font-weight: bold;
+}
+
+.inline_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    gap:20px;
+}
+
+.phone_box {
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-top: 10px; /* Decreased margin-top to reduce vertical space */
+    margin-right: 10px; /* Decreased margin-right to reduce horizontal space */
+    width: fit-content; /* Adjust the length of the box */
+}
+
+.phone {
+    margin-right: 8px;
+    padding-left: 10px;
+}
+
+.rectangle {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px 0;
+    width: fit-content; /* Adjust the length of the box */
+}
+.nextButton {
+    border-radius: 50%;  /* Make it a circle */
+    border: none;
+    background-color: #fff;
+    width: 25px;  /* Adjust size as needed */
+    height: 25px;  /* Adjust size as needed */
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nextButton:hover {
+    background-color: #e0e0e0;
+}

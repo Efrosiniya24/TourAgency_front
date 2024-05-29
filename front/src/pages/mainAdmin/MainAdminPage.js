@@ -25,10 +25,12 @@ const MainAdmin = () => {
                             <img src={analytic}/>
                             <p className={mainAdmin.card_p}>Аналитика</p>
                         </div>
-                        <div className={mainAdmin.card}>
-                            <img src={application}/>
-                            <p className={mainAdmin.card_p}>Заявки</p>
-                        </div>
+                        <NavLink to ="/orders">
+                            <div className={mainAdmin.card}>
+                                <img src={application}/>
+                                <p className={mainAdmin.card_p}>Заявки</p>
+                            </div>
+                        </NavLink>
                         <NavLink to ="/toursAdmin">
                             <div className={mainAdmin.card}>
                                 <img src={travel}/>

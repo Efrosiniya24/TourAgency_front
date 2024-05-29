@@ -7,6 +7,7 @@ import SignUp from './pages/authorization/SignUp';
 import MainAdmin from './pages/mainAdmin/MainAdminPage';
 import DataBase from './pages/dataBase/DataBase';
 import ToursAdmin from './pages/toursAdmin/ToursAdmin';
+import Orders from './pages/orders/orders';
 
 
 function App() {
@@ -21,8 +22,7 @@ function App() {
                 <Route path="/mainAdmin" element={<MainAdmin/>}></Route>
                 <Route path="/dataBase" element={<DataBase/>}></Route>
                 <Route path="/toursAdmin" element={<ToursAdmin/>}></Route>
-                {/* <Route path="/dataBase/toursAdmin" element={<ToursAdmin/>}></Route>
-                <Route path="/dataBase/toursAdmin/dataBase" element={<DataBase/>}></Route> */}
+                <Route path="/orders" element={<Orders/>}></Route>
             </Routes>
         </Router>
     </div>
