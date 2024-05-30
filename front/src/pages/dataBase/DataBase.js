@@ -8,7 +8,7 @@ import dataBase from './DataBase.module.css';
 import up from "./photo/up.png";
 import down from "./photo/down.png";
 import searchIcon from "./photo/search2.png";
-import reloadIcon from "./photo/reload.png";
+import reloadIcon from "./../../photo/reload.png";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 

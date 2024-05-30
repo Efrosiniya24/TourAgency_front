@@ -1,7 +1,6 @@
 import header from "./../../styles/header.module.css"
 import index from "./index.module.css"
 import video from "./beach.mp4"
-import search from "./../../photo/search.png"
 
 import { NavLink } from "react-router-dom"
 
@@ -16,9 +15,6 @@ const MainPageUser = () => {
                 <li><a href="#">Туры</a></li>
                 <li><a href="#">Гостиницы</a></li>
             </ul>
-            <div className={index.search_icon}>
-                <img src={search} width="20" height="20"/>
-            </div>
         </div>
         <div className={header.intro}>
             <div className={index.video}>

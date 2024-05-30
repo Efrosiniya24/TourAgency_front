@@ -5,10 +5,10 @@ import toursAdmin from './toursAdmin.module.css';
 import axios from 'axios';
 import TourInputForm from './../../components/tourInputForm/tourInputForm'; 
 
-import searchIcon from "./photo/search2.png";
+import searchIcon from "./../../photo/search2.png";
 import up from "./photo/up.png";
 import down from "./photo/down.png";
-import reloadIcon from "./photo/reload.png";
+import reloadIcon from "./../../photo/reload.png";
 
 const ToursAdmin = () => {
   const [tours, setTours] = useState([]);

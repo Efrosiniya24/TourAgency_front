@@ -1,20 +1,20 @@
-.containerOrders {
+.orderStyle .containerOrders {
     display: flex;
     min-height: 100vh;
     padding-top: 30px;
 }
 
-.menu {
+.orderStyle .menu {
     font-weight: 700;
     font-size: 20px;
 }
 
-.container {
+.orderStyle .container {
     display: flex;
     margin-top: 50px;
 }
 
-.content {
+.orderStyle .content {
     flex-grow: 1;
     padding: 20px;
     display: flex;
@@ -23,30 +23,23 @@
     height: auto;
 }
 
-.applications {
+.orderStyle .applications {
     display: flex;
     gap: 20px;
 }
 
-.category {
+.orderStyle .category {
     background-color: #f1f1f1;
     padding: 20px;
     border-radius: 10px;
     width: 30%;
 }
 
-.application_card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-
-.application_card p {
+.orderStyle .application_card p {
     margin: 5px 0;
 }
 
-button {
+.orderStyle button {
     margin-top: 10px;
     padding: 5px 10px;
     border: none;
@@ -54,17 +47,7 @@ button {
     cursor: pointer;
 }
 
-button.reject {
-    background-color: #e74c3c;
-    color: white;
-}
-
-button.accept {
-    background-color: #2ecc71;
-    color: white;
-}
-
-.data {
+.orderStyle .data {
     flex: 1;
     border-radius: 20px;
     border: 1px solid #000;
@@ -72,68 +55,75 @@ button.accept {
     padding-top: 15px;
     overflow: hidden; 
     margin-top: -60px;
+    width:1630px;
 }
 
-.tableDataBase {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing:  0; 
-    margin-top: 30;
-}
-
-.tableDataBase tbody tr:first-child td {
+.orderStyle .tableDataBase tbody tr:first-child td {
     padding-top: 10px;
 }
 
-.tableDataBase th {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px; /* Oval shape */
-    border-bottom-right-radius: 20px; /* Oval shape */
+.orderStyle .tableDataBase{
+    border-spacing: 10px;
+    margin-top: -10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.orderStyle .tableDataBase th {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px; /* Oval shape */
+    border-bottom-right-radius: 25px; /* Oval shape */
     border-bottom: none;
     background-color: #e4e4e4; /* Background color */
     padding: 12px; /* Padding for appearance */
     text-align: center; /* Center-aligning text */
     transition: transform 0.2s ease; /* Smooth scaling transition */
+
 }
 
-.tableDataBase th:hover {
+.orderStyle .tableDataBase th:hover {
     transform: scale(1.035); /* Scale up slightly on hover */
 }
 
-.th_content {
+.orderStyle .th_content {
     font-weight: bold;
     color: #214320;
     font-size: 23px;
     text-align: center;
+    width: 550px;
 }
 
-tbody td {
+.orderStyle tbody td {
     transition: transform 0.1s ease;
     padding: 0px;
     top: 300px;
 }
 
-tbody td:hover {
+.orderStyle tbody td:hover {
     transform: scale(1.005);
     cursor: pointer;
 }
 
-tbody tr {
+.orderStyle tbody tr {
     margin: 10px 0;
 }
 
-body {
+.orderStyle body {
     font-family: Arial, sans-serif;
 }
 
-.application_card {
+.orderStyle .application_card {
     background-color: #f1f1f1;
     border: 1px solid #787878;
     border-radius: 20px;
     padding: 15px;
     width: 470px;
     margin: 10px;
+    flex: 1 0 30%;
+    max-width: 30%;
+    box-sizing: border-box;
+    height: 350px;
 }
 
 .application_header, .application_body {
@@ -283,6 +273,17 @@ button.accept:hover {
     transform: scale(1.1);
 }
 
+.th_content{
+    cursor: pointer;
+}
+
+.th_content.rejected:hover {
+    background-color: #df9e61;
+  }
+  
+  .th_content.accepted:hover {
+    background-color: #f4e06e; 
+  }
 .date_box {
     background-color: white;
     border-radius: 15px;
@@ -327,7 +328,7 @@ button.accept:hover {
     width: fit-content; /* Adjust the length of the box */
 }
 .nextButton {
-    border-radius: 50%; 
+    border-radius: 80%; 
     border: none;
     background-color: #fff;
     width: 40px;  
@@ -345,4 +346,77 @@ button.accept:hover {
 
 .nextButton:hover {
     background-color: #e0e0e0;
+}
+
+
+.lineSeparator {
+    border: 0;
+    height: 1px;
+    background: #000000;
+
+}
+
+.application_cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: left; 
+    margin-left: 50px;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 400px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search img {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.search img:hover {
+    transform: scale(1.1);
+}
+
+.search input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.search input:focus {
+    outline: none;
+}
+
+.reloadIcon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.reloadIcon:hover {
+    transform: scale(1.1);
+}
+
+.searchAndUserInfo{
+    margin-top: 10px;
+    margin-left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

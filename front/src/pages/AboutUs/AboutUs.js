@@ -2,7 +2,6 @@ import header from "./../../styles/header.module.css"
 import index from "./../mainPage/index.module.css"
 import aboutUs from "./aboutUs.module.css"
 
-import search from "./../../photo/search.png"
 import we from "./we.jpg"
 
 import { NavLink } from "react-router-dom"
@@ -18,9 +17,6 @@ const MainPageUser = () => {
                     <li><a href="#">Туры</a></li>
                     <li><a href="#">Гостиницы</a></li>
                 </ul>
-                <div className={header.search_icon}>
-                    <img src={search} width="20" height="20" alt=""/>
-                </div>
             </header>
             <main>
                 <div className={aboutUs.first_clide}>
