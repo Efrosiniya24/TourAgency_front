@@ -70,17 +70,19 @@ button.accept {
     border: 1px solid #000;
     padding: 5px;
     padding-top: 15px;
-    overflow: hidden; /* Ensure content does not overflow */
+    overflow: hidden; 
+    margin-top: -60px;
 }
 
 .tableDataBase {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 10px 0; /* Horizontal space between th elements */
+    border-spacing:  0; 
+    margin-top: 30;
 }
 
 .tableDataBase tbody tr:first-child td {
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .tableDataBase th {
@@ -108,7 +110,8 @@ button.accept {
 
 tbody td {
     transition: transform 0.1s ease;
-    padding: 12px;
+    padding: 0px;
+    top: 300px;
 }
 
 tbody td:hover {
@@ -173,7 +176,7 @@ body {
 }
 
 .user_info {
-    text-align: right;
+    text-align: left;
     cursor: pointer;
 }
 
@@ -192,6 +195,15 @@ body {
 .name {
     margin-right: 8px;
     padding-left: 10px;
+}
+
+.name_box .name{
+    transition: transform 0.1s ease;
+}
+
+.name_box .name:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .user_info .name {
@@ -227,6 +239,10 @@ body {
     margin: 0;
 }
 
+.application_details div{
+    margin-top: 7px;
+}
+
 .application_actions {
     display: flex;
     flex-direction: column; /* Stack buttons vertically */
@@ -248,6 +264,11 @@ button.reject {
     color: #000;
     padding: 10px;
     border-radius: 15px;
+    transition: transform 0.1s ease;
+}
+
+button.reject:hover {
+    transform: scale(1.1);
 }
 
 button.accept {
@@ -255,6 +276,11 @@ button.accept {
     color: #000;
     padding: 10px;
     border-radius: 15px;
+    transition: transform 0.1s ease;
+}
+
+button.accept:hover {
+    transform: scale(1.1);
 }
 
 .date_box {
@@ -267,6 +293,7 @@ button.accept {
 
 .date {
     font-weight: bold;
+    font-size: 12px;
 }
 
 .inline_container {
@@ -282,9 +309,9 @@ button.accept {
     border-radius: 15px;
     padding: 5px 10px;
     display: inline-block;
-    margin-top: 10px; /* Decreased margin-top to reduce vertical space */
-    margin-right: 10px; /* Decreased margin-right to reduce horizontal space */
-    width: fit-content; /* Adjust the length of the box */
+    margin-top: 10px; 
+    margin-right: 10px; 
+    width: fit-content; 
 }
 
 .phone {
@@ -300,11 +327,11 @@ button.accept {
     width: fit-content; /* Adjust the length of the box */
 }
 .nextButton {
-    border-radius: 50%;  /* Make it a circle */
+    border-radius: 50%; 
     border: none;
     background-color: #fff;
-    width: 25px;  /* Adjust size as needed */
-    height: 25px;  /* Adjust size as needed */
+    width: 40px;  
+    height: 40px;  
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -314,6 +341,7 @@ button.accept {
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
 
 .nextButton:hover {
     background-color: #e0e0e0;
