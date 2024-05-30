@@ -28,25 +28,13 @@ const Orders = () => {
                 <SliderBar />
                 <main className={styles.content}>
                     <section className={styles.data}>
-                        <div className={styles.tableContainer}>
-                            <table className={styles.tableDataBase}>
-                                <thead>
-                                    <tr>
-                                        <th className={styles.th_content}><div>В обработке</div></th>
-                                        <th className={styles.th_content}><div>Принята</div></th>
-                                        <th className={styles.th_content}><div>Отклонена</div></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {orders.map(order => (
-                                        <tr key={order.id}>
-                                            <td>{order.status === 'processing' ? '✔' : ''}</td>
-                                            <td>{order.status === 'accepted' ? '✔' : ''}</td>
-                                            <td>{order.status === 'rejected' ? '✔' : ''}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                        <div className={styles.tableDataBase}>
+                            <th className={styles.th_content}><div>В обработке</div></th>
+                            <th className={styles.th_content}><div>Принята</div></th>
+                            <th className={styles.th_content}><div>Отклонена</div></th>
+                            <hr className={styles.lineSeparator} />
+                        </div>
+                        <div className={styles.application_cards}>
                             {orders.map(order => (
                                 <div key={order.id} className={styles.application_card}>
                                     <div className={styles.application_header}>
