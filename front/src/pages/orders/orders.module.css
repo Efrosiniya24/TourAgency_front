@@ -79,7 +79,6 @@
     padding: 12px; /* Padding for appearance */
     text-align: center; /* Center-aligning text */
     transition: transform 0.2s ease; /* Smooth scaling transition */
-
 }
 
 .orderStyle .tableDataBase th:hover {
@@ -239,7 +238,10 @@
     align-items: flex-start; /* Align buttons to the start */
     gap: 5px; /* Space between buttons */
     margin-left: 20px; /* Add some space between details and actions */
-    margin-top: 60px;
+}
+
+.non_processing .application_actions {
+    margin-top: 115px;
 }
 
 button {
@@ -279,11 +281,12 @@ button.accept:hover {
 
 .th_content.rejected:hover {
     background-color: #df9e61;
-  }
-  
-  .th_content.accepted:hover {
+}
+
+.th_content.accepted:hover {
     background-color: #f4e06e; 
-  }
+}
+
 .date_box {
     background-color: white;
     border-radius: 15px;
@@ -353,7 +356,6 @@ button.accept:hover {
     border: 0;
     height: 1px;
     background: #000000;
-
 }
 
 .application_cards {
@@ -363,6 +365,7 @@ button.accept:hover {
     justify-content: left; 
     margin-left: 50px;
 }
+
 .search-container {
     display: flex;
     align-items: center;
@@ -413,10 +416,28 @@ button.accept:hover {
     transform: scale(1.1);
 }
 
-.searchAndUserInfo{
+.searchAndUserInfo {
     margin-top: 10px;
     margin-left: 60px;
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.orderStyle .application_actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.non_processing .application_actions {
+    margin-top: 115px;
+}
+
+.application_actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin-left: 20px;
 }

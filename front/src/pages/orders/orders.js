@@ -13,6 +13,7 @@ const Orders = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [filteredOrders, setFilteredOrders] = useState([]);
+    const [currentStatus, setCurrentStatus] = useState('processing');
 
     useEffect(() => {
         fetchOrders();
@@ -25,7 +26,7 @@ const Orders = () => {
             const allOrders = response.data;
             setOrders(allOrders);
             const processingOrders = allOrders.filter(order => order.status === 'processing');
-            setFilteredOrders(processingOrders); // Изначально отображать заказы со статусом processing
+            setFilteredOrders(processingOrders);
         } catch (error) {
             console.error('Error fetching orders:', error);
             setError(error);
@@ -55,7 +56,7 @@ const Orders = () => {
             );
             console.log('Search response:', response.data);
             setOrders(response.data);
-            setFilteredOrders(response.data); // Обновить отфильтрованные заказы
+            setFilteredOrders(response.data);
         } catch (error) {
             console.error('Search error:', error);
             setError(error);
@@ -75,8 +76,32 @@ const Orders = () => {
     };
 
     const filterByStatus = (status) => {
+        setCurrentStatus(status);
         const filtered = orders.filter(order => order.status === status);
         setFilteredOrders(filtered);
+    };
+
+    const updateOrderStatus = async (orderId, newStatus) => {
+        try {
+            const response = await axios.post('http://localhost:8000/orders/update-status/', {
+                order_id: orderId,
+                status: newStatus
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.data.status === 'success') {
+                const updatedOrders = orders.map(order => order.id === orderId ? { ...order, status: newStatus } : order);
+                setOrders(updatedOrders);
+                const filtered = updatedOrders.filter(order => order.status === currentStatus);
+                setFilteredOrders(filtered);
+            } else {
+                console.error('Failed to update order status:', response.data.message);
+            }
+        } catch (error) {
+            console.error('Error updating order status:', error);
+        }
     };
 
     return (
@@ -171,9 +196,19 @@ const Orders = () => {
                                                         </div>
                                                         <button className={styles.nextButton}><FaChevronRight /></button>
                                                     </div>
-                                                    <div className={styles.application_actions}>
-                                                        <button className={styles.reject}>Отклонить</button>
-                                                        <button className={styles.accept}>Принять</button>
+                                                    <div className={`${styles.application_actions} ${order.status === 'processing' ? styles.processing_actions : ''}`}>
+                                                        {order.status === 'processing' && (
+                                                            <>
+                                                                <button className={styles.reject} onClick={() => updateOrderStatus(order.id, 'rejected')}>Отклонить</button>
+                                                                <button className={styles.accept} onClick={() => updateOrderStatus(order.id, 'accepted')}>Принять</button>
+                                                            </>
+                                                        )}
+                                                        {order.status === 'accepted' && (
+                                                            <button className={styles.reject} onClick={() => updateOrderStatus(order.id, 'rejected')}>Отклонить</button>
+                                                        )}
+                                                        {order.status === 'rejected' && (
+                                                            <button className={styles.accept} onClick={() => updateOrderStatus(order.id, 'accepted')}>Принять</button>
+                                                        )}
                                                     </div>
                                                 </div>
                                             </div>
