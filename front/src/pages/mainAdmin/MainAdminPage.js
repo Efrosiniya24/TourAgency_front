@@ -21,10 +21,12 @@ const MainAdmin = () => {
                 </div>
                 <div className={mainAdmin.container}>
                     <div className={mainAdmin.top_row}>
-                        <div className={mainAdmin.card}>
-                            <img src={analytic}/>
-                            <p className={mainAdmin.card_p}>Аналитика</p>
-                        </div>
+                        <NavLink to ="/analytics ">
+                            <div className={mainAdmin.card}>
+                                <img src={analytic}/>
+                                <p className={mainAdmin.card_p}>Аналитика</p>
+                            </div>
+                        </NavLink>
                         <NavLink to ="/orders">
                             <div className={mainAdmin.card}>
                                 <img src={application}/>

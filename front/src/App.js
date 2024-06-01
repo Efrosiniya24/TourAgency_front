@@ -8,6 +8,7 @@ import MainAdmin from './pages/mainAdmin/MainAdminPage';
 import DataBase from './pages/dataBase/DataBase';
 import ToursAdmin from './pages/toursAdmin/ToursAdmin';
 import Orders from './pages/orders/orders';
+import Analytics from './pages/analytics/analytics';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/dataBase" element={<DataBase/>}></Route>
                 <Route path="/toursAdmin" element={<ToursAdmin/>}></Route>
                 <Route path="/orders" element={<Orders/>}></Route>
+                <Route path="/analytics" element={<Analytics/>}></Route>
             </Routes>
         </Router>
     </div>

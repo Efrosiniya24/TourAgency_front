@@ -27,7 +27,7 @@ const DataBase = () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get('http://localhost:8000/user/allUsers');
+        const response = await axios.get('http://localhost:8000/user/allUsers/');
         setUsers(response.data);
       } catch (error) {
         setError(error);
