@@ -231,6 +231,7 @@ tbody td:hover {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .application_card p {
@@ -497,4 +498,19 @@ button.accept:hover {
   margin-left: 50px;
   border:#000 solid 1px;
   border-radius: 30px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.closeButton:hover {
+  transform: scale(1.2);
 }

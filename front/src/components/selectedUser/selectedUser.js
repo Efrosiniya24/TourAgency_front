@@ -1,13 +1,13 @@
 import React from 'react';
 import selectedStyle from "./selectedUser.module.css";
 
-const SelectedUser = ({ user, dataBase, setIsVisible, fetchUserOrders }) => {
+const SelectedUser = ({ user, dataBase, setIsVisible, fetchUserOrders, handleCloseSelectedUser }) => {
   if (!user) {
     return null;
   }
 
   const handleClose = () => {
-    setIsVisible(false);
+    handleCloseSelectedUser(); // Закрыть both SelectedUser и application_cards
   };
 
   const handleShowOrders = () => {
@@ -52,7 +52,7 @@ const SelectedUser = ({ user, dataBase, setIsVisible, fetchUserOrders }) => {
           </div>
           <div className={selectedStyle.user_actions}>
             <button onClick={handleShowOrders}>Посмотреть заявки</button>
-            <button>Посмотреть туры</button>
+            {/* <button>Посмотреть туры</button> */}
           </div>
         </div>
       </div>

@@ -47,6 +47,7 @@
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    margin-left: -200px;
   }
 
   .user_actions button {

@@ -89,11 +89,22 @@ const DataBase = () => {
     if (user.id === selectedUserId) { 
       setIsVisible(false);
       setSelectedUserId(null); 
+      setShowOrders(false); // Закрываем заявки при закрытии пользователя
     } else {
       setSelectedUser(user);
       setIsVisible(true);
       setSelectedUserId(user.id); // Сохраняем ID выбранного пользователя
+      setShowOrders(false); // Закрываем заявки при выборе другого пользователя
     }
+  };
+
+  const handleCloseOrders = () => {
+    setShowOrders(false);
+  };
+
+  const handleCloseSelectedUser = () => {
+    setIsVisible(false);
+    setShowOrders(false);
   };
 
   const sortedUsers = [...users].sort((a, b) => {
@@ -127,7 +138,7 @@ const DataBase = () => {
   }
 
   return (
-    <div className = {dataBase.DataBase}>
+    <div className={dataBase.DataBase}>
       <HeaderAdmin />
       <div className={dataBase.containerDataBase}>
         <SliderBar />
@@ -153,9 +164,10 @@ const DataBase = () => {
                 onClick={handleReload} 
               />
             </div>
-            {isVisible && <SelectedUser user={selectedUser} dataBase={dataBase} setIsVisible={setIsVisible} fetchUserOrders={fetchUserOrders} />}
+            {isVisible && <SelectedUser user={selectedUser} dataBase={dataBase} setIsVisible={setIsVisible} fetchUserOrders={fetchUserOrders} handleCloseSelectedUser={handleCloseSelectedUser} />}
             {showOrders && (
               <div className={dataBase.application_cards}>
+                <button className={dataBase.closeButton} onClick={handleCloseOrders}>×</button>
                 {isLoading ? (
                   <div>Загрузка...</div>
                 ) : (

@@ -136,7 +136,7 @@ const Analytics = () => {
                                     </div>
                                     <div className={analytics.regionFilter}>
                                         <label htmlFor="region">Регион</label>
-                                        <input type="text" id="region" placeholder="Швейцария" />
+                                        <input type="text" id="region" placeholder="Страна или город" />
                                     </div>
                                 </div>
                                 <button>Посмотреть статистику</button>
