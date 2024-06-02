@@ -1,13 +1,17 @@
 import React from 'react';
 import selectedStyle from "./selectedUser.module.css";
 
-const SelectedUser = ({ user, dataBase, setIsVisible }) => {
+const SelectedUser = ({ user, dataBase, setIsVisible, fetchUserOrders }) => {
   if (!user) {
-    return null; 
+    return null;
   }
 
   const handleClose = () => {
     setIsVisible(false);
+  };
+
+  const handleShowOrders = () => {
+    fetchUserOrders(user.id);
   };
 
   return (
@@ -18,7 +22,7 @@ const SelectedUser = ({ user, dataBase, setIsVisible }) => {
             {user.surname} {user.name} {user.patronymic}
             <button className={selectedStyle.close_button} onClick={handleClose}>
               ×
-            </button> 
+            </button>
           </div>
           <div className={selectedStyle.user_info_data}>
             <div className={selectedStyle.user_info_row}>
@@ -47,7 +51,7 @@ const SelectedUser = ({ user, dataBase, setIsVisible }) => {
             </div>
           </div>
           <div className={selectedStyle.user_actions}>
-            <button>Посмотреть заявки</button>
+            <button onClick={handleShowOrders}>Посмотреть заявки</button>
             <button>Посмотреть туры</button>
           </div>
         </div>

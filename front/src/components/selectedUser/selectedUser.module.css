@@ -6,7 +6,7 @@
     font-family: sans-serif;
     background-color: #f2f2f2;
     position: relative; /* для позиционирования кнопки закрытия */
-    left:52px;
+    margin-left: 50px;
   }
 
   .user_info_header {

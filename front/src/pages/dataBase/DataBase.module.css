@@ -75,8 +75,10 @@ th {
 
 .data {
   flex: 1;
-  margin-left: 300px;
+  margin-left: 100px;
   max-width: calc(100% - 1000px);
+  padding-left: 0px;
+  align-items: left;
 }
 
 .narrow-slider {
@@ -149,7 +151,7 @@ li:hover {
 }
 
 .tableDataBase {
-  width: 100%;
+
   border-collapse: collapse;
 }
 
@@ -217,4 +219,282 @@ tbody td:hover {
 .widerTable {
   width: 80%; /* Установите желаемую ширину таблицы */
   margin: 0 auto; /* Центрируйте таблицу */
+}
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+}
+
+.application_cards {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.application_card p {
+  margin: 5px 0;
+}
+
+.DataBase .application_card {
+  background-color: #f1f1f1;
+  border: 1px solid #787878;
+  border-radius: 20px;
+  padding: 15px;
+  width: 600px;
+  margin: 10px;
+  flex: 1 0 30%;
+  margin-left: 30px;
+  box-sizing: border-box;
+  height: 350px;
+}
+
+.application_header, .application_body {
+  margin-bottom: 10px;
+}
+
+.application_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.id_box {
+  display: flex;
+  align-items: center;
+  background-color: #e0f2f1;
+  border-radius: 15px;
+  border: 1px solid #FFFFFF;
+  padding: 5px 10px;
+  margin-top: -5px;
+  margin-left: 0px;
+  height: 30px;
+}
+
+
+.id_label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.id_value {
+  padding: 2px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: #fff;
+}
+
+.user_info {
+  text-align: left;
+  cursor: pointer;
+}
+
+
+
+.name_box {
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 15px;
+  display: inline-block;
+  display: flex;
+  align-items: center; /* Center items vertically */
+  width: 100%;
+  margin-top: -5px;
+  flex-grow: 1; /* Make the box take the available space */
+}
+
+.name {
+  margin-right: 8px;
+  padding-left: 10px;
+}
+
+
+
+.name_box .name{
+  transition: transform 0.1s ease;
+}
+
+.name_box .name:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.user_info .name {
+  text-decoration: underline;
+}
+
+.divider_black {
+  width: 1px;
+  height: 25px;
+  background-color: #000;
+}
+
+.client_info .client_detail {
+  margin: 5px 0;
+}
+
+
+.application_main {
+  display: flex;
+  justify-content: space-between; /* Align items horizontally */
+}
+
+.application_details {
+  background-color: #D5D5D5;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px 0;
+  width: 350px;
+  height: 150px;
+  position: relative; /* Add this line */
+}
+
+.application_details p {
+  margin: 0;
+}
+
+.application_details div{
+  margin-top: 7px;
+}
+
+
+
+.application_actions {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: flex-start; /* Align buttons to the start */
+  gap: 5px; /* Space between buttons */
+  margin-left: 20px; /* Add some space between details and actions */
+}
+
+
+
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.reject {
+  background-color: #df9e61;
+  color: #000;
+  padding: 10px;
+  border-radius: 15px;
+  transition: transform 0.1s ease;
+}
+
+button.reject:hover {
+  transform: scale(1.1);
+}
+
+button.accept {
+  background-color: #f4e06e;
+  color: #000;
+  padding: 10px;
+  border-radius: 15px;
+  transition: transform 0.1s ease;
+}
+
+button.accept:hover {
+  transform: scale(1.1);
+}
+
+.th_content{
+  cursor: pointer;
+}
+
+.th_content.rejected:hover {
+  background-color: #df9e61;
+}
+
+.th_content.accepted:hover {
+  background-color: #f4e06e; 
+}
+
+.date_box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-top: -5px;
+}
+
+.date {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.inline_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+  gap:20px;
+}
+
+.phone_box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-top: 10px; 
+  margin-right: 10px; 
+  width: fit-content; 
+}
+
+.phone {
+  margin-right: 8px;
+  padding-left: 10px;
+}
+
+.rectangle {
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px 0;
+  width: fit-content; /* Adjust the length of the box */
+}
+.nextButton {
+  border-radius: 80%; 
+  border: none;
+  background-color: #fff;
+  width: 40px;  
+  height: 40px;  
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.nextButton:hover {
+  background-color: #e0e0e0;
+}
+
+
+.lineSeparator {
+  border: 0;
+  height: 1px;
+  background: #000000;
+}
+
+.DataBase .application_cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: left; 
+  margin-left: 50px;
+  border:#000 solid 1px;
+  border-radius: 30px;
 }
