@@ -9,7 +9,9 @@ import DataBase from './pages/dataBase/DataBase';
 import ToursAdmin from './pages/toursAdmin/ToursAdmin';
 import Orders from './pages/orders/orders';
 import Analytics from './pages/analytics/analytics';
-
+import Tours from './pages/tour/tour';
+import TourDetail from './pages/tourDetail/tourDetail';
+import ApplicationForm from './pages/applicationForm/applicationForm'
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
                 <Route path="/toursAdmin" element={<ToursAdmin/>}></Route>
                 <Route path="/orders" element={<Orders/>}></Route>
                 <Route path="/analytics" element={<Analytics/>}></Route>
+                <Route path="/tours" element={<Tours/>}></Route>
+                <Route path="/tours/:id" element={<TourDetail/>}></Route>
+                <Route path="/application" element={<ApplicationForm />} />
             </Routes>
         </Router>
     </div>

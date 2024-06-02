@@ -12,8 +12,7 @@ const MainPageUser = () => {
             <ul className={header.nav}>
                 <li><a href="#">Главная</a></li>
                 <li><NavLink to ="/aboutUs"> О нас</NavLink></li>
-                <li><a href="#">Туры</a></li>
-                <li><a href="#">Гостиницы</a></li>
+                <li><NavLink to ="/tours">Туры</NavLink></li>
             </ul>
         </div>
         <div className={header.intro}>

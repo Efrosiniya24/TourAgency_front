@@ -21,76 +21,57 @@ const Analytics = () => {
     const [averageAgeFemale, setAverageAgeFemale] = useState('');
     const [genderData, setGenderData] = useState({ male_percentage: 0, female_percentage: 0 });
     const [activeSection, setActiveSection] = useState('clients');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:8000/user/user-сount')
-            .then(response => {
-                setTotalUsers(response.data.count);
-            })
-            .catch(error => {
-                console.error('Error fetching total users:', error);
-            });
-
-        axios.get('http://localhost:8000/orders/order-count/')
-            .then(response => {
-                setTotalOrders(response.data.count);
-            })
-            .catch(error => {
-                console.error('Error fetching total orders:', error);
-            });
-
-        axios.get('http://localhost:8000/orders/processing-count/')
-            .then(response => {
-                setProcessingOrders(response.data.count);
-            })
-            .catch(error => {
-                console.error('Error fetching processing orders:', error);
-            });
-
-        axios.get('http://localhost:8000/orders/accepted-count/')
-            .then(response => {
-                setAcceptedOrders(response.data.count);
-            })
-            .catch(error => {
-                console.error('Error fetching accepted orders:', error);
-            });
-
-        axios.get('http://localhost:8000/orders/rejected-count/')
-            .then(response => {
-                setRejectedOrders(response.data.count);
-            })
-            .catch(error => {
-                console.error('Error fetching rejected orders:', error);
-            });
-
-        axios.get('http://localhost:8000/user/average-age')
-            .then(response => {
-                setAverageAge(response.data.average_age);
-            })
-            .catch(error => {
-                console.error('Error fetching average age:', error);
-            });
-
-        axios.get('http://localhost:8000/user/gender-distribution')
-            .then(response => {
-                setGenderData(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching gender distribution:', error);
-            });
-
-        axios.get('http://localhost:8000/user/average-age-by-gender')
-            .then(response => {
-                setAverageAgeMale(response.data.average_age_male);
-                setAverageAgeFemale(response.data.average_age_female);
-            })
-            .catch(error => {
-                console.error('Error fetching average age by gender:', error);
-            });
+        fetchData();
     }, []);
+
+    const fetchData = (start_date = '', end_date = '') => {
+        const postData = { start_date, end_date };
+
+        console.log('Fetching data with:', postData); // Отладочная информация
+
+        Promise.all([
+            axios.post('http://localhost:8000/user/user-сount-data', postData),
+            axios.post('http://localhost:8000/orders/order-count-data/', postData),
+            axios.post('http://localhost:8000/orders/processing-count-data/', postData),
+            axios.post('http://localhost:8000/orders/accepted-count-data/', postData),
+            axios.post('http://localhost:8000/orders/rejected-count-data/', postData),
+            axios.post('http://localhost:8000/user/average-age-data', postData),
+            axios.post('http://localhost:8000/user/gender-distribution-data', postData),
+            axios.post('http://localhost:8000/user/average-age-by-gender-data', postData)
+        ])
+        .then(([
+            totalUsersResponse, totalOrdersResponse, processingOrdersResponse,
+            acceptedOrdersResponse, rejectedOrdersResponse, averageAgeResponse,
+            genderDistributionResponse, averageAgeByGenderResponse
+        ]) => {
+            setTotalUsers(totalUsersResponse.data.count);
+            setTotalOrders(totalOrdersResponse.data.count);
+            setProcessingOrders(processingOrdersResponse.data.count);
+            setAcceptedOrders(acceptedOrdersResponse.data.count);
+            setRejectedOrders(rejectedOrdersResponse.data.count);
+            setAverageAge(averageAgeResponse.data.average_age);
+            setGenderData(genderDistributionResponse.data);
+            setAverageAgeMale(averageAgeByGenderResponse.data.average_age_male);
+            setAverageAgeFemale(averageAgeByGenderResponse.data.average_age_female);
+
+            console.log('Total Users:', totalUsersResponse.data.count); // Отладочная информация
+            console.log('Total Orders:', totalOrdersResponse.data.count); // Отладочная информация
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    };
 
     const handleSectionClick = (section) => {
         setActiveSection(section);
+    };
+
+    const handleFetchData = () => {
+        fetchData(startDate, endDate);
     };
 
     const orderData = {
@@ -126,20 +107,30 @@ const Analytics = () => {
                         </div>
                         <hr className={analytics.hrClass} />
                         <div className={`${analytics.filter_bar} ${analytics.flexRow}`}>
-                            <div className = {analytics.filterP}>
+                            <div className={analytics.filterP}>
                                 <div className={analytics.dateRegionFilter}>
                                     <div className={analytics.dateFilter}>
                                         <p>С</p>
-                                        <input type="date" id="start-date" value="2024-01-22" />
+                                        <input 
+                                            type="date" 
+                                            id="start-date" 
+                                            value={startDate} 
+                                            onChange={(e) => setStartDate(e.target.value)} 
+                                        />
                                         <p>по</p>
-                                        <input type="date" id="end-date" value="2024-02-13" />
+                                        <input 
+                                            type="date" 
+                                            id="end-date" 
+                                            value={endDate} 
+                                            onChange={(e) => setEndDate(e.target.value)} 
+                                        />
                                     </div>
                                     <div className={analytics.regionFilter}>
                                         <label htmlFor="region">Регион</label>
                                         <input type="text" id="region" placeholder="Страна или город" />
                                     </div>
                                 </div>
-                                <button>Посмотреть статистику</button>
+                                <button onClick={handleFetchData}>Посмотреть статистику</button>
                             </div>
                         </div>
                         <hr className={analytics.hrClass} />
