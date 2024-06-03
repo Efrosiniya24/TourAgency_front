@@ -11,6 +11,8 @@ import analytics from "./analytics.module.css";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const Analytics = () => {
+    const [initialTotalUsers, setInitialTotalUsers] = useState('');
+    const [initialTotalOrders, setInitialTotalOrders] = useState('');
     const [totalUsers, setTotalUsers] = useState('');
     const [totalOrders, setTotalOrders] = useState('');
     const [processingOrders, setProcessingOrders] = useState('');
@@ -48,6 +50,10 @@ const Analytics = () => {
             acceptedOrdersResponse, rejectedOrdersResponse, averageAgeResponse,
             genderDistributionResponse, averageAgeByGenderResponse
         ]) => {
+            if (start_date === '' && end_date === '') {
+                setInitialTotalUsers(totalUsersResponse.data.count);
+                setInitialTotalOrders(totalOrdersResponse.data.count);
+            }
             setTotalUsers(totalUsersResponse.data.count);
             setTotalOrders(totalOrdersResponse.data.count);
             setProcessingOrders(processingOrdersResponse.data.count);
@@ -89,6 +95,7 @@ const Analytics = () => {
     return (
         <div className={analytics.AnalyticsStyle}>
             <div className={analytics.container}>
+
                 <HeaderAdmin />
                 <div className={analytics.containerOrders}>
                     <SliderBar />
@@ -97,11 +104,11 @@ const Analytics = () => {
                             <div className={analytics.stats_header}>
                                 <div className={analytics.stat}>
                                     <h3>Всего заявок</h3>
-                                    <p>{totalOrders}</p>
+                                    <p>{initialTotalOrders}</p>
                                 </div>
                                 <div className={analytics.stat}>
                                     <h3>Всего клиентов</h3>
-                                    <p>{totalUsers}</p>
+                                    <p>{initialTotalUsers}</p>
                                 </div>
                             </div>
                         </div>
