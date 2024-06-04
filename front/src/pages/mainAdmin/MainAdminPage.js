@@ -41,10 +41,12 @@ const MainAdmin = () => {
                         </NavLink>
                     </div>
                     <div className={mainAdmin.bottom_row}>
+                    <NavLink to ="/report">
                         <div className={mainAdmin.card}>
                             <img src={report}/>
                             <p className={mainAdmin.card_p}>Отчет</p>
                         </div>
+                        </NavLink>
                         <NavLink to ="/dataBase">
                             <div className={mainAdmin.card}>
                                 <img src={database}/>

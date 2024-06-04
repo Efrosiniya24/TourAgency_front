@@ -31,7 +31,7 @@ const SliderBar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="#" activeClassName="active">
+                        <NavLink to="/report" activeClassName="active">
                             <img src={reportIcon} alt="Report Icon" />
                             <p className={sliderBar.menu}>Отчет</p>
                         </NavLink>

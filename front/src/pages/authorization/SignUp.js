@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
-import login from './login.module.css';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import login from './login.module.css';
 
 const SignUp = () => {
+  const navigate = useNavigate();  // Вызов useNavigate в начале компонента
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const data = {
-      name,
-      email,
-      phone,
-      password
-    };
+    event.preventDefault(); // Предотвращение отправки формы по умолчанию
 
     try {
-      const response = await axios.post('http://localhost:8000/user/signUp', data);
-      console.log('Ответ сервера:', response.data);
+      const response = await axios.post('http://localhost:8000/user/signUp', {
+        name,
+        email,
+        phone,  // Добавлен номер телефона в запрос
+        password
+      });
+
+      if (response.status === 201) {
+        localStorage.setItem('accessToken', response.data.access);
+        localStorage.setItem('refreshToken', response.data.refresh);
+        console.log('Successfully registered:', response.data);
+        navigate('/signIn');  // Перенаправление пользователя на страницу входа после успешной регистрации
+      }
     } catch (error) {
-      console.error('Ошибка при отправке данных:', error);
+      console.error('Error during registration:', error);
     }
   };
 
@@ -43,7 +48,7 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -55,7 +60,7 @@ const SignUp = () => {
               onChange={(e) => setPhone(e.target.value)}
             />
             <input
-              type="text"
+              type="password"  // Изменен тип на password для правильного ввода пароля
               name="password"
               placeholder="Пароль"
               value={password}

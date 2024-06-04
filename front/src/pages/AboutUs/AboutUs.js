@@ -15,7 +15,6 @@ const MainPageUser = () => {
                     <li><NavLink to ="/">Главная</NavLink></li>
                     <li><a href="#"> О нас</a></li>
                     <li><a href="#">Туры</a></li>
-                    <li><a href="#">Гостиницы</a></li>
                 </ul>
             </header>
             <main>

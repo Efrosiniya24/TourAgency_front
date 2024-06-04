@@ -1,17 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate, NavLink } from "react-router-dom";
+import axiosInstance from './axiosInstance'; 
 import login from './login.module.css';
 
-import { NavLink } from "react-router-dom";
-
 const SignIn = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [_csrf, setCsrf] = React.useState(''); 
+  // Получение CSRF токена из meta-тега
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault(); 
+    try {
+      axiosInstance.post(
+        '/user/signIn', 
+        { email, password },
+        { headers: { 'X-CSRFToken': csrfToken } } 
+      )
+      .then(response => {
+        if (response.status !== 200) return;
 
+        localStorage.setItem('accessToken', response.data.access);
+        localStorage.setItem('refreshToken', response.data.refresh);
+        const { id, role } = response.data;
+        localStorage.setItem('userRole', role);
+
+        switch (role) {
+          case 'client':
+            navigate(`/tours/${id}`);
+            break;
+          case 'admin':
+            navigate(`/mainAdmin/${id}`);
+            break;
+          default:
+            setErrorMessage('Неизвестная роль пользователя');
+        }
+      })
+      .catch(error => {
+        console.log(error.response.status);
+        if (error.response.status === 403) {
+          setErrorMessage('Ваш аккаунт деактивирован. Пожалуйста, свяжитесь с поддержкой.');
+        } else {
+          console.error('Ошибка при авторизации:', error);
+          setErrorMessage('Неверный логин или пароль');
+        }
+      });
+    } catch (error) {
+      console.error('Ошибка при авторизации:', error);
+      setErrorMessage('Неверный логин или пароль');
+    }
   };
 
   return (
@@ -23,10 +64,10 @@ const SignIn = () => {
               <h1>Войти</h1>
               <input 
                 type="email" 
-                name="username" 
+                name="email" 
                 placeholder="Email"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input 
                 type="password" 
@@ -35,8 +76,8 @@ const SignIn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <input type="hidden" name="_csrf" value={_csrf} /> 
-              <NavLink to="/mainAdmin"><button type="submit">Войти</button></NavLink>
+              <input type="hidden" name="_csrf" value={csrfToken} /> 
+              <button type="submit">Войти</button>
             </form>
           </div>
         </div>
@@ -46,10 +87,9 @@ const SignIn = () => {
               <div className={login.toggle_right}>
                 <h1>Добро <br/>пожаловать!</h1>
                 <p>Введите Ваши персональные данные для авторизации</p>
-                {/* Consider using a Link component from React Router for navigation */}
-                <NavLink to ="/signUp"><button className={login.hidden} onClick={() => {
-                  // Handle navigation to registration page
-                }}>Зарегистрироваться</button></NavLink>
+                <NavLink to="/signUp">
+                  <button className={login.hidden}>Зарегистрироваться</button>
+                </NavLink>
               </div>
             </div>
           </div>
