@@ -23,7 +23,7 @@ const MainPageUser = () => {
                 <h1 className={index.h1_index}>WORLD</h1>
                 <p className={index.mainP}>Вдохновение в путешествиях</p>
                 <div className={index.buttons}>
-                    <a href="#">Посмотреть туры</a>
+                    <NavLink to ="/tours">Посмотреть туры</NavLink>
                     <NavLink to="/signIn">Войти</NavLink>
                 </div>
             </div>

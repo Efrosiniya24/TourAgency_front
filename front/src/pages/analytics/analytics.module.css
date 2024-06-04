@@ -74,6 +74,7 @@
     margin-bottom: 20px;
 }
 
+.AnalyticsStyle
 .filter_bar input,
 .filter_bar select,
 .filter_bar button {
@@ -84,7 +85,8 @@
     outline: none;
 }
 
-.filter_bar button {
+.AnalyticsStyle .filter_bar button {
+
     background-color: #f4e06e;
     color: #000;
     border: none;
@@ -92,6 +94,7 @@
     transition: background-color 0.2s ease;
 }
 
+.AnalyticsStyle
 .filter_bar button:hover {
     background-color: #dfc750;
 }
@@ -116,6 +119,7 @@
     margin-bottom: 20px; /* Добавлено, чтобы отделить заголовки от содержимого */
 }
 
+.AnalyticsStyle
 .tableDataBase th {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;

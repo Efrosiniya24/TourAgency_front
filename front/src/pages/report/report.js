@@ -11,7 +11,10 @@ const Report = () => {
 
     const downloadReport = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/orders/generate_order_report/', {
+            const response = await axios.post('http://localhost:8000/orders/generate_order_report/', {
+                start_date: startDate,
+                end_date: endDate
+            }, {
                 responseType: 'blob', // важный параметр для получения данных в формате Blob
             });
 
@@ -58,10 +61,9 @@ const Report = () => {
                                 </div>
                             </div>
                             <div className={report.card}>
+                            <button onClick={downloadReport}>
                                 <img src={reportt} alt="Отчет"/>
-                                <p className={report.card_p}>Отчет по заявкам</p>
-                                <button onClick={downloadReport} className={report.downloadButton}>
-                                    Скачать отчет
+                                <p className={report.card_p}>Скачать отчет по заявкам</p>
                                 </button>
                             </div>
                         </div>

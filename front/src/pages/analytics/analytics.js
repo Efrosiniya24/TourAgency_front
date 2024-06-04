@@ -132,10 +132,10 @@ const Analytics = () => {
                                             onChange={(e) => setEndDate(e.target.value)} 
                                         />
                                     </div>
-                                    <div className={analytics.regionFilter}>
+                                    {/* <div className={analytics.regionFilter}>
                                         <label htmlFor="region">Регион</label>
                                         <input type="text" id="region" placeholder="Страна или город" />
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <button onClick={handleFetchData}>Посмотреть статистику</button>
                             </div>

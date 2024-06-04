@@ -9,7 +9,6 @@ const Tours = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch services from API
         axios.get('http://localhost:8000/tours/allTours')
             .then(response => {
                 setServices(response.data);

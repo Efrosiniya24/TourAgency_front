@@ -112,3 +112,7 @@
   font-size: 25px;
 }
 
+/* tourInputForm.module.css */
+.datePicker input {
+  pointer-events: none;
+}

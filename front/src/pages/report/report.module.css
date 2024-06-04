@@ -79,18 +79,6 @@
     outline: none;
 }
 
-.filter_bar button {
-    background-color: #f4e06e;
-    color: #000;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.filter_bar button:hover {
-    background-color: #dfc750;
-}
-
 .flexRow {
     display: flex;
     align-items: left;

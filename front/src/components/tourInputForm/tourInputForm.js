@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import axios from 'axios';
 import tourInputForm from './tourInputForm.module.css';
@@ -24,6 +24,17 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
         console.error('Details:', error.response.data);
         alert('Error: ' + JSON.stringify(error.response.data)); // Display detailed error
       }
+    }
+  };
+
+  // Получаем текущую дату в формате 'YYYY-MM-DD' для атрибута min
+  const today = new Date().toISOString().split('T')[0];
+
+  // Валидация ввода для предотвращения отрицательных и дробных чисел, а также нуля
+  const handleNumberChange = (event) => {
+    const { name, value } = event.target;
+    if (value === '' || /^[1-9]\d*$/.test(value)) {
+      handleChange(event);
     }
   };
 
@@ -64,7 +75,9 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                       type="number"
                       name="numberOfDays"
                       value={tourData.numberOfDays}
-                      onChange={handleChange}
+                      onChange={handleNumberChange}
+                      min="1"
+                      step="1"
                     />
                   </td>
                 </tr>
@@ -75,7 +88,9 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                       type="number"
                       name="price"
                       value={tourData.price}
-                      onChange={handleChange}
+                      onChange={handleNumberChange}
+                      min="1"
+                      step="1"
                     />
                   </td>
                 </tr>
@@ -83,11 +98,12 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                   <th>Начало тура:</th>
                   <td>
                     <input
-                      type="text"
+                      type="date"
                       name="beginningDate"
-                      value={tourData.beginningDate}
+                      value={tourData.beginningDate ? new Date(tourData.beginningDate).toISOString().split('T')[0] : ''}
                       onChange={handleChange}
-                      placeholder="DD.MM.YYYY или YYYY-MM-DD"
+                      className={tourInputForm.datePicker}
+                      min={today}
                     />
                   </td>
                 </tr>
@@ -95,11 +111,12 @@ const TourInputForm = ({ tourData, handleChange, handleDelete, handleClose, setT
                   <th>Конец тура:</th>
                   <td>
                     <input
-                      type="text"
+                      type="date"
                       name="endDate"
-                      value={tourData.endDate}
+                      value={tourData.endDate ? new Date(tourData.endDate).toISOString().split('T')[0] : ''}
                       onChange={handleChange}
-                      placeholder="DD.MM.YYYY или YYYY-MM-DD"
+                      className={tourInputForm.datePicker}
+                      min={today}
                     />
                   </td>
                 </tr>
